@@ -1,0 +1,558 @@
+/*Viết chương trình nhập vào mảng 2 chiều là ma trận số nguyên gồm N dòng, M cột. Chuyển ma trận đã nhập thành mảng 1 chiều và xuất ra màn hình.*/
+// #include <iostream>
+// using namespace std;
+// void nhap(int a[][100], int &n, int &m){
+//     cout << "Nhap so dong: ";
+//     cin >> n;
+//     cout << "Nhap so cot: ";
+//     cin >> m;
+//     for (int i = 0; i < n; i++){
+//         for(int j = 0; j < m; j++)
+//         {
+//             cout<<"Phan tu thu a["<<i<<"]["<<j<<"]: ";
+//             cin >> a[i][j];
+//         }
+//     }
+// }
+// void Bien2ChieuThanh1Chieu(int a[][100], int n, int m){
+//     int b[n*m],k=0;
+//     for (int i = 0; i < n; i++){
+//         for (int j = 0; j < m; j++){
+//             b[k++]=a[i][j];
+//         }
+//     }
+//     for (int z = 0; z < k; z++){
+//         cout<<b[z]<< " ";
+//     }
+// }
+// int main(){
+//     int a[100][100], n,m;
+//     nhap(a,n,m);
+//     Bien2ChieuThanh1Chieu(a,n, m);
+//     return 0;
+// }
+/*Sủ dụng con trỏ viết chương trình nhập vào ma trận số nguyên gồm n dòng, m cột. Chuẩn hóa dữ liệu ma trận về [0..1] và xuất ra màn hình. Lấy 2 số sau dấu thập phân.*/
+// #include <iostream>
+// using namespace std;
+
+// int main(){
+//     cout.precision(2);
+//     int m,n,min = 10e6, max = -10e6;
+//     cin>>n>>m;
+//     int **a= new int *[n];
+//     for (int i = 0; i < n; i++){
+//         a[i] = new int [m];
+//     }
+//     for (int i =  0; i < n; i++){
+//         for (int j = 0; j < m; j++){
+//             cin >> a[i][j];
+//             if (a[i][j] > max)
+//                 max = a[i][j];
+//             if (a[i][j] < min)
+//                 min = a[i][j];
+//         }
+//     }
+//     for (int i = 0; i < n; i++){
+//         for (int j = 0; j < m; j++){
+//             cout << (1.*(a[i][j]-min)/(max-min)) << " ";
+//         }
+//         cout<< endl;
+//     }
+// }
+/*Sử dụng con trỏ viết chương trình nhập ma trận vuông NxN và số nguyên dương M <= N*N. Trả về giá trị chỉ số M (Xem lại Slide 21 Chương 2) trên ma trận NxN đã nhập. */
+// #include<iostream>
+// using namespace std;
+
+// int main(){
+//     int n,k;
+//     cin>>n;
+//     double **a=new double *[n];
+//     for (int i = 0; i < n; i++){
+//         for (int j = 0; j < n; j++){
+//             cin >> a[i][j];
+//         }
+//     }
+//     cin>>k;
+//     if (k== n*n)
+//         cout<<a[n-1][n-1];
+//     else
+//         cout<< a[int(k/n)][k%n];
+// }
+/*Sử dụng con trỏ viết chương trình nhập vào ma trận vuông gồm n dòng , n cột. In ra
+màn hình ma trận giảm dần theo dòng và cột. (Sử dụng cấp phát động).*/
+
+// #include <iostream>
+// using namespace std;
+// const int maxdong = 10;
+// const int maxcot = 10;
+
+// void nhap(int a[maxdong][maxcot], int &dong, int &cot){
+//     do{
+//         cout << "Nhap so dong: ";
+//         cin >> dong;
+//         if (dong < 1 || dong > maxdong){
+//             cout << "\nSo dong khong hop le. Xin kiem tra lai!";
+//         }
+//     }while(dong < 1 || dong > maxdong);
+//     do{
+//         cout << "Nhap so cot: ";
+//         cin >> cot;
+//         if (cot < 1 || cot > maxcot){
+//             cout << "\nSo cot khong hop le. Xin kiem tra lai!";
+//         }
+//     }while(cot < 1 || cot > maxcot);
+
+//     for (int i=0; i < dong; i++){
+//         for (int j=0; j < cot; j++){
+//             cout<< "\nNhap a["<<i<<"]["<<j<<"]:";
+//             cin >> a[i][j];
+//         }
+//     }
+// }
+// void xuat(int a[maxdong][maxcot], int dong, int cot){
+//     cout << "Xuất mảng 2 chiều:"<<endl;
+//     for(int i = 0; i < dong; i++){
+//         for (int j = 0; j < cot; j++){
+//             cout<<a[i][j]<<"\t";
+//         }
+//         cout<<endl;
+//     }
+// }
+// void sapxepgiamdan(int a[maxdong][maxcot], int dong, int cot){
+//     int k=dong*cot;
+//     for (int i = 0; i < k-1; i++){
+//         for (int j=i+1; j < k; j++){
+//             if(a[i/cot][i%cot] < a[j/cot][j%cot]){
+//                 int temp = a[i/cot][i%cot];
+//                 a[i/cot][i%cot]=a[j/cot][j%cot];
+//                 a[j/cot][j%cot]=temp;
+//             }
+
+//         }
+//     }
+// }
+// int main(){
+//     int a[maxdong][maxcot];
+//     int dong, cot;
+    
+//     nhap(a,dong,cot);
+//     sapxepgiamdan(a,dong,cot);
+//     xuat(a,dong,cot);
+//     return 0;
+// }
+
+/*Sử dụng con trỏ viết chương trình nhập vào mảng 1 chiều gồm 1 phần tử là số nguyên.
+In ra màn hình danh sách số hoàn thiện, nếu không có không in. (Sử dụng cấp phát động)
+Số hoàn thiện là số có tổng các ước số chính thức bằng chính nó như: 6 = 1+2+3;
+28 = 1 +2 +4 +7 +14
+*/
+// #include <iostream>
+// using namespace std;
+
+// int KiemTraSoHoanThien(int n){
+//     int s=0;
+//     int co=1;
+//     for (int i = 1; i < n; i++){
+//         if (n%i == 0)
+//             s=s+i;
+//     }
+//     if(s!=n)
+//         co=0;
+//     return co;
+// }
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     int *a = new int [n];
+//     for (int i = 0;i<n;i++)
+//         cin>>a[i];
+//     for(int i = 0; i<n;i++){
+//         if(KiemTraSoHoanThien(*(a+i))==1&&*(a+i)!=0){
+//             cout<<*(a+i)<< " ";
+//         }
+//     }
+//     delete [] a;
+//     return 0;
+// }
+/*Dùng con trỏ viết chương trình nhập vào ma trận số nguyên gồm n dòng, m cột. In
+chỉ số các dòng chứa toàn số lẻ, nếu không có không in*/
+// #include <iostream>
+// using namespace std;
+// const int maxdong = 10;
+// const int maxcot = 10;
+
+// void nhap(int a[maxdong][maxcot], int &dong, int &cot){
+//     do{
+//         cout << "Nhap so dong: ";
+//         cin >> dong;
+//         if (dong < 1 || dong > maxdong){
+//             cout << "\nSo dong khong hop le. Xin kiem tra lai!";
+//         }
+//     }while(dong < 1 || dong > maxdong);
+//     do{
+//         cout << "Nhap so cot: ";
+//         cin >> cot;
+//         if (cot < 1 || cot > maxcot){
+//             cout << "\nSo cot khong hop le. Xin kiem tra lai!";
+//         }
+//     }while(cot < 1 || cot > maxcot);
+
+//     for (int i=0; i < dong; i++){
+//         for (int j=0; j < cot; j++){
+//             cout<< "\nNhap a["<<i<<"]["<<j<<"]:";
+//             cin >> a[i][j];
+//         }
+//     }
+// }
+// void xuat(int a[maxdong][maxcot], int dong, int cot){
+//     cout << "Xuất mảng 2 chiều:"<<endl;
+//     for(int i = 0; i < dong; i++){
+//         for (int j = 0; j < cot; j++){
+//             cout<<a[i][j]<<"\t";
+//         }
+//         cout<<endl;
+//     }
+// }
+// void KtraDonCoSoLe(int a[maxdong][maxcot], int cot, int dong){
+//     for(int i=0;i<dong;i++){
+//         int co=1;
+//         for (int j=0;j<cot;j++){
+//             if(a[i][j]%2==0)
+//             {
+//                 co=0;
+//                 break;
+//             }
+//         }
+//         if(co==1)
+//             cout<<i<< " ";
+
+//     }
+// }
+// int main(){
+//     int a[maxdong][maxcot];
+//     int dong, cot;
+    
+//     nhap(a,dong,cot);
+//     KtraDonCoSoLe(a,dong,cot);
+//     xuat(a,dong,cot);
+//     return 0;
+// }
+/*Sử dụng con trỏ viết chương trình nhập vào ma trận gồm n dòng và m cột. Thực hiện xóa dòng k < n được nhập từ bàn phím và in ma trận ra màn hình.*/
+// #include <cmath>
+// #include<iostream>
+// using namespace std;
+// int main(){
+//     int n,m,d,dem;
+//     dem=0;
+//     cin>>n;
+//     cin>>m;
+//     int matran[n][m];
+//     int temp[n-1][m];
+//     for (int i = 0; i < n; i++){
+//         for(int j = 0 ;j < m;j++){
+//             cin>>matran[i][j];
+//         }
+//     }
+//     cin>>d;
+// 	for(int i=0;i<n;i++)
+// 	{	
+// 		if(i!=d)
+// 		{
+// 			for(int j=0;j<m;j++)
+// 				temp[dem][j]=matran[i][j];
+// 			dem++;
+// 		}
+// 	}
+//   	for(int i=0; i<dem;i++)
+//  	{
+//  		for(int j=0; j<m;j++)
+//  			cout<<temp[i][j]<<" ";
+//  		cout<<"\n";
+// 	 }
+//  	return 0;
+//  }
+/*Sử dụng con trỏ viết chương trình nhập vào ma trận số nguyên gồm n dòng, m cột. In ra màn hình số lần xuất hiện của phần tử lớn nhất trong mảng.*/
+// #include<iostream>
+// #include<cmath>
+// using namespace std;
+// const int maxdong = 10;
+// const int maxcot = 10;
+// void nhap(int a[maxdong][maxcot],int &dong, int &cot )
+// {
+// 	cin>>dong;
+// 	cin>>cot;
+// 	for (int i=0;i<dong;i++)
+// 	{
+// 		for(int j=0;j<cot;j++)
+// 		{
+// 			a[i][j]= 0;
+// 		}
+// 	}
+// 	for (int i=0;i<dong;i++)
+// 	{
+// 		for(int j=0;j<cot;j++)
+// 		{
+// 			cin>>a[i][j];
+// 		}
+// 	}
+// }
+// void xuat(int a[maxdong][maxcot],int dong,int cot)
+// {
+// 	for (int i=0;i<dong;i++)
+// 	{
+// 		for(int j=0;j<cot;j++)
+// 		{
+// 			cout<<a[i][j];
+// 			cout<<endl;
+// 		}
+// 	}
+// }
+
+// void PhanTuLonNhat(int a[maxdong][maxcot],int dong,int cot)
+// {
+// 	int max;
+// 	int dem =0;
+// 	max = a[0][0];
+// 	for(int i=0;i<dong;i++)
+// 	{
+// 		for(int j=0;j<cot;j++)
+// 		{
+// 			if(max==a[i][j])
+// 			{
+// 				dem++;
+// 			}
+// 			else if(a[i][j]>max)
+// 			{
+// 				max = a[i][j];
+// 				dem =1;
+// 			}
+// 		}
+		
+// 	}cout<<dem;
+// }
+
+// int main()
+// {
+// 	int dong =0,cot=0;
+// 	int a[maxdong][maxcot];
+// 	nhap(a,dong,cot);
+// 	PhanTuLonNhat(a,dong,cot);
+// 	return 0;
+// }
+/*Sử dụng con trỏ viết chương trình nhập vào ma trận vuông số nguyên gồm n dòng, n cột. Tính tổng các phần tử thuộc ma trận tam giác trên (không tính các phần tử nằm trên đường chéo chính)*/
+// #include<iostream>
+// #include<cmath>
+// using namespace std;
+// const int maxdong = 10;
+// const int maxcot = 10;
+// void nhap(int a[maxdong][maxcot],int &dong, int &cot )
+// {
+// 	cin>>dong;
+// 	cin>>cot;
+// 	for (int i=0;i<dong;i++)
+// 	{
+// 		for(int j=0;j<cot;j++)
+// 		{
+// 			cin>>a[i][j];
+// 		}
+// 	}
+// }
+// void xuat(int a[maxdong][maxcot],int dong,int cot)
+// {
+// 	for (int i=0;i<dong;i++)
+// 	{
+// 		for(int j=0;j<cot;j++)
+// 		{
+// 			cout<<a[i][j];
+			
+// 		}
+// 		cout<<endl;
+// 	}
+// }
+// void tongtamgiactren(int a[][maxcot],int sochieu)
+// {
+// 	long tong =0;
+// 	for (int i=0;i<sochieu;i++)
+// 		for(int j=sochieu-1;j>i;j--)
+// 			tong +=a[i][j];
+// 	cout<<tong;
+// }
+// int main()
+// {
+// 	int dong =0,cot=0;
+// 	int a[maxdong][maxcot];
+// 	nhap(a,dong,cot);
+// 	tongtamgiactren(a,cot);
+// 	return 0;
+// }
+/*Sử dụng con trỏ viết chương trình nhập vào ma trận vuông số nguyên gồm n dòng, n cột. In ra màn hình các số chính phương trên đường chéo chính, không có không in. (Số chính phương là số tự nhiên có căn bậc 2 là một số nguyên*/
+// #include<iostream>
+// #include<cmath>
+// using namespace std;
+// const int maxdong = 10;
+// const int maxcot = 10;
+// void nhap(int a[maxdong][maxcot],int &dong, int &cot )
+// {
+// 	cin>>dong;
+// 	cin>>cot;
+// 	for (int i=0;i<dong;i++)
+// 	{
+// 		for(int j=0;j<cot;j++)
+// 		{
+// 			cin>>a[i][j];
+// 		}
+// 	}
+// }
+// void xuat(int a[maxdong][maxcot],int dong,int cot)
+// {
+// 	for (int i=0;i<dong;i++)
+// 	{
+// 		for(int j=0;j<cot;j++)
+// 		{
+// 			cout<<a[i][j];
+// 		}
+// 		cout<<endl;
+// 	}
+// }
+
+// void DuongCheoChinh_SoChinhPhuong(int a[maxdong][maxcot],int dong, int cot)
+// {
+// 	for(int i=0;i<dong;i++)
+// 	{
+// 		for(int j =0 ;j < cot;j++)
+// 		{
+// 			if(i==j)
+// 			{
+// 				int sqr = sqrt(a[i][j]);
+// 			    if(sqr*sqr == a[i][j]){
+// 			        cout << a[i][j]<<" ";
+// 			    }
+// 			}
+// 		}
+// 	} 
+// }
+
+// int main()
+// {
+// 	int dong =0,cot=0;
+// 	int a[maxdong][maxcot];
+// 	nhap(a,dong,cot);
+//     DuongCheoChinh_SoChinhPhuong(a,dong,cot);
+// 	return 0;
+// }
+
+
+/*Cho số n, xác định xem n có phải là số đối xứng hay không.*/
+// #include <iostream>
+// using namespace std;
+// int timSoDao(int nInput)
+// {
+// 	int nSoDao = 0, nRem;
+
+// 	while (nInput != 0)
+// 	{
+// 		nRem = nInput % 10;
+
+// 		nSoDao = (nSoDao * 10) + nRem;
+
+// 		nInput = nInput / 10;
+// 	}
+
+// 	return nSoDao;
+// }
+
+// bool laSoDoiXung(int nInput)
+// {
+// 	if (nInput == timSoDao(nInput))
+// 		return true;
+// 	else
+// 		return false;
+
+// }
+
+// int main()
+// {
+// 	int nInput;
+// 	cin >> nInput;
+
+// 	if (laSoDoiXung(nInput))
+// 	{
+// 		cout << "1" << endl;
+// 	}
+// 	else
+// 	{
+// 		cout << "0" << endl;
+// 	}
+
+// 	return 0;
+// }
+/*Viết chương trình tìm số Fibonaci thứ n.( không dùng đệ quy)
+Dãy số Fibinaci gồm những số: 1, 1, 2, 3, 5, 8, 13, 21 ... bắt đầu từ hai số 1 và 1,
+tiếp sau đó các số Fibinaci sau bằng tổng của 2 số Fibinaci trước nó.
+Dãy Fibinaci có thể định nghĩa như sau:
+Fibinaci (1) = 1; Fibinaci (2) = 1;
+Fibinaci 👎 = Fibinaci (n-1) + Fibinaci (n-2) (n>2).
+Viết chương trình tính tổng n số Fibonaci đầu tiên.*/
+// #include <iostream>
+// using namespace std;
+
+// int fibonacci(int n) {
+//     int f0 = 0;
+//     int f1 = 1;
+//     int fn = 1;
+//     int i;
+ 
+//     if (n < 0) {
+//         return -1;
+//     } else if (n == 0 || n == 1) {
+//         return n;
+//     } else {
+//         for (i = 2; i < n; i++) {
+//             f0 = f1;
+//             f1 = fn;
+//             fn = f0 + f1;
+//         }
+//     }
+//     return fn;
+// }
+ 
+
+// int main() 
+// {
+//  	int i;
+//  	int n;
+//  	int tong =0;
+//     //cout<<"Nhap vao vi tri fibo: ";
+//     cin>>n;
+//     for (i = 0; i < n; i++) {
+//         tong= tong + fibonacci(i);
+//     }
+//     cout<<fibonacci(i);
+//     return 0;
+// }
+
+// #include <iostream>
+// #include <string>
+// #include <string.h>
+// using namespace std;
+
+// string reverse_string(string str) {
+// 	string temp_str = str;
+// 	int index_pos = 0;
+
+// 	for (int x = temp_str.length()-1; x >= 0; x--)
+// 	{
+// 		str[index_pos] = temp_str[x];
+// 		index_pos++;
+// 	}
+// 	return str;
+// }
+
+// int main()
+// {   
+//     string s;
+//     getline(cin,s);
+// 	cout << reverse_string(s);
+// 	return 0;
+// }
